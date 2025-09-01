@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router"
+import { CssBaseline, ThemeProvider, createTheme, Box, AppBar, Toolbar, Typography } from "@mui/material"
+import JobsIndex from "./pages/JobsIndex"
+import Candidates from "./pages/Candidates"
+import Sidebar from "./components/Sidebar"
 
-function App() {
+const theme = createTheme();
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ display: "flex" }}>
+        <AppBar position="fixed" sx={{ zIndex: (t) => t.zIndex.drawer + 1 }}>
+          <Toolbar>
+            <Typography variant="h6">
+              Recruiter Console
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Sidebar />
 
-export default App;
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Toolbar />
+          <Routes>
+            <Route path="/" element={<JobsIndex />} />
+            <Route path="/jobs" element={<JobsIndex />} />
+            <Route path="/candidates" element={<Candidates />} />
+          </Routes>
+        </Box>
+      </Box>
+    </ThemeProvider>
+  )
+}
