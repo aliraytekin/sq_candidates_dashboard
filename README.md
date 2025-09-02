@@ -1,4 +1,4 @@
----
+
 
 # 📌 `candidates-frontend/README.md` (React + MUI)
 
@@ -7,8 +7,6 @@
 
 This is the frontend for the Recruiter Console technical test.  
 It is built with **React** and **Material UI (MUI)**.
-
----
 
 ## 🚀 Features
 
